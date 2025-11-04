@@ -52,10 +52,17 @@ body {
 
 .sidebar {
   background: var(--panel);
-  padding: 20px;
+  padding: 22px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   box-shadow: inset 0 0 0 1px rgba(200,255,80,0.05);
+}
+
+.sidebar h2 {
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-size: 20px;
+  text-shadow: 0 0 10px rgba(150,255,80,0.4);
 }
 
 /* Form elements */
@@ -75,24 +82,27 @@ input {
   color: var(--text);
   font-size: 14px;
   transition: 0.2s;
+  margin-bottom: 14px;
 }
 
 input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 10px rgba(180,255,80,0.3);
+  box-shadow: 0 0 12px rgba(180,255,80,0.35);
 }
 
-/* Buttons */
+/* -------- Buttons -------- */
+
 button {
   width: 100%;
-  padding: 13px;
+  padding: 14px;
   font-weight: 600;
   border-radius: var(--radius-md);
   cursor: pointer;
   font-size: 14px;
   border: none;
-  transition: 0.2s ease-in-out;
+  transition: 0.22s ease-in-out;
+  margin-bottom: 14px; /* ✅ space between buttons */
 }
 
 .btn-primary {
@@ -101,7 +111,7 @@ button {
   box-shadow: var(--shadow-neon);
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2.5px) scale(1.01);
   box-shadow: 0 0 28px rgba(180,255,80,0.45);
 }
 
@@ -111,21 +121,20 @@ button {
   color: var(--accent);
 }
 .btn-secondary:hover {
-  background: rgba(180,255,80,0.1);
+  background: rgba(180,255,80,0.08);
   box-shadow: var(--shadow-neon);
 }
 
 /* --------- Main Content --------- */
 
 .main {
-  padding: 20px;
+  padding: 22px;
   background: var(--panel);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   position: relative;
 }
 
-/* Titles */
 h2, h3 {
   margin: 0 0 12px;
   color: var(--accent);
@@ -137,7 +146,7 @@ h2, h3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--gap);
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .metric {
@@ -146,7 +155,7 @@ h2, h3 {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   text-align: center;
-  transition: 0.25s ease;
+  transition: 0.25s;
 }
 .metric:hover {
   border-color: var(--accent);
@@ -179,7 +188,7 @@ h2, h3 {
   box-shadow: var(--shadow-neon);
 }
 
-/* Chart shell */
+/* Chart container */
 .chart {
   height: 320px;
   background: #09140f;
@@ -190,10 +199,10 @@ h2, h3 {
 .chart:after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px),
-              linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background: linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 50px 50px;
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
 /* Table */
@@ -212,7 +221,7 @@ h2, h3 {
   letter-spacing: .3px;
 }
 
-/* Alerts list message */
+/* Alerts */
 .no-alerts {
   padding: 12px;
   color: var(--text-muted);
@@ -225,21 +234,22 @@ h2, h3 {
   animation: fadeUp .45s ease both;
 }
 @keyframes fadeUp {
-  from { opacity:0; transform: translateY(10px); }
+  from { opacity:0; transform: translateY(12px); }
   to { opacity:1; transform: translateY(0); }
 }
 
-/* Responsive */
+/* ------------------------------
+   RESPONSIVE 
+   ------------------------------*/
+
 @media (max-width:1080px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-  .kpi {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .container { grid-template-columns: 1fr; }
+  .kpi { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width:600px) {
-  .kpi {
-    grid-template-columns: 1fr;
-  }
+  .kpi { grid-template-columns: 1fr; }
+  .sidebar { padding: 16px; }
+  .main { padding: 16px; }
+  button { padding: 12px; }
 }
