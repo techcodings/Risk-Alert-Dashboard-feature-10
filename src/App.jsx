@@ -91,7 +91,7 @@ export default function App() {
    <h1 className="main-title" style={{ marginTop: '60px' }}>
   
 </h1>
-<h2 className="sub-title">⚠️ Risk & Alert Dashboard</h2>
+<h1 className="sub-title">⚠️ Risk & Alert Dashboard</h1>
 
 
 
