@@ -96,6 +96,82 @@ input {
   transition: 0.2s;
   margin-bottom: 14px;
 }
+/* -------- Title Section -------- */
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #d8ff4b; /* soft neon yellow-green */
+  text-shadow: 0 0 12px rgba(200, 255, 80, 0.65);
+  margin-bottom: 4px;
+}
+
+.sub-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #b8ff7b; /* lighter lime tint */
+  text-shadow: 0 0 8px rgba(150, 255, 80, 0.35);
+  margin-bottom: 28px;
+}
+
+/* -------- Back Button Adjustment -------- */
+.btn-back-top {
+  background: linear-gradient(90deg, #d8ff4b, #9aff64);
+  color: #0b0f06;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 18px;
+  box-shadow: 0 0 14px rgba(180, 255, 90, 0.55);
+}
+.btn-back-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(190, 255, 100, 0.9);
+}
+
+/* -------- Improved Mobile Layout -------- */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .card {
+    margin-top: 14px;
+    padding: 14px;
+  }
+
+  .main-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .sub-title {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .btn-back-top {
+    top: 10px;
+    right: 10px;
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+
+  .kpi {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 540px) {
+  .kpi {
+    grid-template-columns: 1fr;
+  }
+
+  .main-title {
+    font-size: 1.4rem;
+  }
+}
 
 input:focus {
   outline: none;
