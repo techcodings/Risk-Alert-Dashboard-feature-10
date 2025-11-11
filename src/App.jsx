@@ -88,11 +88,11 @@ export default function App() {
         ← Back to Home
       </a>
 
-      {/* Title */}
-      <h1 style={{ marginTop: '60px' }}>⚠️ Risk & Alert Dashboard</h1>
-      <p style={{ opacity: 0.7 }}>
-        Monitor environmental risk trends, analyze metrics, and generate custom alerts.
-      </p>
+    <h1 className="main-title" style={{ marginTop: '60px' }}>
+  ⚠️ Risk & Alert Dashboard
+</h1>
+<h2 className="sub-title">AI-Powered Climate & Hazard Monitoring</h2>
+
 
       {/* Controls */}
       <div className="card">
