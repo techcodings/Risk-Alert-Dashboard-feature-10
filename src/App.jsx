@@ -16,7 +16,7 @@ export default function App() {
   const [metrics, setMetrics] = useState(null);
   const [alerts, setAlerts] = useState([]);
 
-  // NEW: user-tunable thresholds (more sensitive than defaults)
+  // NEW: user-tunable thresholds
   const [riskHigh, setRiskHigh] = useState(0.60);
   const [riskSpike, setRiskSpike] = useState(0.10);
   const [precipHigh, setPrecipHigh] = useState(10);
@@ -32,7 +32,7 @@ export default function App() {
       const m = await api.metrics(s);
       setMetrics(m);
 
-      // PASS thresholds so the backend will actually emit alerts
+      // Send thresholds for alerts
       const a = await api.alerts(s, {
         riskHigh: Number(riskHigh),
         riskSpike: Number(riskSpike),
@@ -59,29 +59,68 @@ export default function App() {
   const risk = series.map(s => s.risk);
 
   return (
-    <div className="container">
+    <div className="container" style={{ position: 'relative' }}>
+      {/* ✅ Fixed Top-Right Back Button */}
+      <a
+        href="https://energy-verse-portal.netlify.app/?feature=8"
+        className="btn-back-top"
+        style={{
+          position: 'absolute',
+          top: '16px',
+          right: '20px',
+          background: 'linear-gradient(90deg, #caff37, #84ff4b)',
+          color: '#000',
+          padding: '7px 16px',
+          borderRadius: '8px',
+          fontWeight: '600',
+          textDecoration: 'none',
+          boxShadow: '0 0 12px rgba(186,255,55,0.7)',
+          transition: 'all 0.3s ease',
+          zIndex: 1000,
+        }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.boxShadow = '0 0 20px rgba(186,255,55,1)')
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.boxShadow = '0 0 12px rgba(186,255,55,0.7)')
+        }
+      >
+        ← Back to Home
+      </a>
+
+      {/* Title */}
+      <h1 style={{ marginTop: '60px' }}>⚠️ Risk & Alert Dashboard</h1>
+      <p style={{ opacity: 0.7 }}>
+        Monitor environmental risk trends, analyze metrics, and generate custom alerts.
+      </p>
+
+      {/* Controls */}
       <div className="card">
         <h2>Controls</h2>
 
         <div className="input-row">
-          <div><label>Latitude</label>
+          <div>
+            <label>Latitude</label>
             <input type="number" step="0.0001" value={lat} onChange={e=>setLat(Number(e.target.value))}/>
           </div>
-          <div><label>Longitude</label>
+          <div>
+            <label>Longitude</label>
             <input type="number" step="0.0001" value={lng} onChange={e=>setLng(Number(e.target.value))}/>
           </div>
         </div>
 
         <div className="input-row">
-          <div><label>Start</label>
+          <div>
+            <label>Start</label>
             <input type="date" value={start} onChange={e=>setStart(e.target.value)}/>
           </div>
-          <div><label>End</label>
+          <div>
+            <label>End</label>
             <input type="date" value={end} onChange={e=>setEnd(e.target.value)}/>
           </div>
         </div>
 
-        {/* NEW: Thresholds */}
+        {/* Thresholds */}
         <div className="input-row">
           <div>
             <label>Risk High (0–1)</label>
@@ -118,6 +157,7 @@ export default function App() {
         </div>
       </div>
 
+      {/* Dashboard */}
       <div className="card">
         <div className="flex" style={{justifyContent:'space-between'}}>
           <div className="flex">
